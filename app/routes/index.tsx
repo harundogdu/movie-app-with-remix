@@ -14,7 +14,7 @@ export default function Index() {
   return (
     <div className="flex flex-col justify-center items-center flex-1 py-8">
       <h1 className="text-3xl font-bold">Popular Movies</h1>
-      <div className="flex flex-wrap space-y-4 space-x-4">
+      <div className="grid grid-cols-5 mt-6">
         {movies.map((movie) => (
           <MoviesCard movie={movie} key={movie.id} />
         ))}
