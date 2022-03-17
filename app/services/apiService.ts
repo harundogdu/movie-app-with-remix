@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const API_KEY = process.env.API_KEY;
+
 export const apiService = axios.create({
     baseURL: process.env.API_URL,
     headers: {
@@ -9,7 +11,11 @@ export const apiService = axios.create({
 });
 
 export const getPopularMovies = async () => {
-    const API_KEY = process.env.API_KEY;
     const response = await apiService.get(`/movie/popular?api_key=${API_KEY}`);
+    return response.data;
+}
+
+export const getMovie = async (movieId : string) => {
+    const response = await apiService.get(`/movie/${movieId}?api_key=${API_KEY}`);
     return response.data;
 }

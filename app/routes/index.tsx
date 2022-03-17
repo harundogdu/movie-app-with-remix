@@ -12,7 +12,7 @@ export default function Index() {
   const movies = useLoaderData<IMoviesProps[]>();
 
   return (
-    <div className="flex flex-col justify-center items-center flex-1 py-8">
+    <div className="flex flex-col justify-center items-center">
       <h1 className="text-3xl font-bold">Popular Movies</h1>
       <div className="grid grid-cols-5 mt-6">
         {movies.map((movie) => (
