@@ -35,7 +35,7 @@ export function Document({ children }: IDocumentProps) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="flex flex-1 flex-col">
         {children}
         {process.env.NODE_ENV === "development" && <LiveReload />}
         <ScrollRestoration />
@@ -47,7 +47,7 @@ export function Document({ children }: IDocumentProps) {
 
 export function Layout({ children }: ILayoutProps) {
   return (
-    <div className="px-24 py-8 flex flex-col w-full h-full">
+    <div className=" flex flex-col w-full h-full">
       <Header />
       <Main children={children} />
       <Footer />
