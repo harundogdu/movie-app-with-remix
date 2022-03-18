@@ -16,7 +16,7 @@ interface MenuItemLinks {
 function MenuItem(props: MenuItemProps) {
     return (
         <>
-            <small className="text-sm text-gray-800 my-3">
+            <small className="text-sm text-light my-3">
                 {props.title}
             </small>
             <div className="flex flex-col text-lg px-3 space-y-3">
