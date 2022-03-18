@@ -1,8 +1,12 @@
-import {Links, LinksFunction, LiveReload, Meta, Outlet, Scripts, ScrollRestoration,} from "remix";
+import {Links, LinksFunction, LiveReload, Meta, MetaFunction, Outlet, Scripts, ScrollRestoration,} from "remix";
 import {Error, Footer, Header, Main} from "~/components";
 import {IDocumentProps, IErrorProps, ILayoutProps} from "~/types/root";
 import styles from "~/styles/app.css";
 import Sidebar from "~/components/sidebar";
+
+export const meta: MetaFunction = () => {
+    return { title: "HD Movie App | Homepage" };
+};
 
 export const links: LinksFunction = () => {
     return [{rel: "stylesheet", href: styles}];
@@ -24,7 +28,6 @@ export function Document({children}: IDocumentProps) {
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <meta charSet="utf-8"/>
-            <title>Remix App</title>
             <Meta/>
             <Links/>
         </head>
