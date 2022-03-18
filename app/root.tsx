@@ -30,9 +30,9 @@ export function Document({children}: IDocumentProps) {
         </head>
         <body className="flex flex-1 flex-col">
         {children}
-        {process.env.NODE_ENV === "development" && <LiveReload/>}
         <ScrollRestoration/>
         <Scripts/>
+        {process.env.NODE_ENV === "development" && <LiveReload/>}
         </body>
         </html>
     );

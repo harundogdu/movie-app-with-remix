@@ -28,19 +28,19 @@ function Menu() {
         {
             id: 28,
             title: "Action",
-            path: "/genre/28",
+            path: "/genre/28-action",
             icon: <AiOutlineStar/>
         },
         {
             id: 12,
             title: "Adventure",
-            path: "/genre/12",
+            path: "/genre/12-adventure",
             icon: <AiOutlineStock/>
         },
         {
             id: 16,
             title: "Animation",
-            path: "/genre/16",
+            path: "/genre/16-animation",
             icon: <AiOutlineStock/>
         },
         {

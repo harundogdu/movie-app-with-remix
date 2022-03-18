@@ -1,6 +1,8 @@
 import {NavLink} from "remix";
 import {IMoviesProps} from "~/types/movies";
-import {AiFillStar,AiOutlineStar} from "react-icons/ai";
+import {AiFillStar, AiOutlineStar} from "react-icons/ai";
+import {useEffect, useRef} from "react";
+import VanillaTilt from 'vanilla-tilt';
 
 function MoviesCard({movie}: { movie: IMoviesProps }) {
     const BASE_IMAGE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
@@ -16,24 +18,43 @@ function MoviesCard({movie}: { movie: IMoviesProps }) {
         return stars;
     }
 
+    const tilt = useRef(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const options = {
+        speed: 300,
+        max: 10,
+        perspective: 1000,
+        transition: true,
+        easing: "cubic-bezier(.03,.98,.52,.99)"
+    }
+
+    useEffect(() => {
+        // @ts-ignore
+        return VanillaTilt.init(tilt.current, options);
+    }, [options]);
+
+
     return (
         <NavLink
-            to={`/movies/${movie.id}`}
-            className="text-center m-2 rounded-lg cursor-pointer group hover:scale-105 transition-transform duration-300"
+            to={`/movie/${movie.id}`}
+            className="text-center m-2 rounded-lg cursor-pointer group"
         >
-            <div className="relative">
-                <img
-                    src={`${BASE_IMAGE_URL}/${movie.poster_path}`}
-                    alt={movie.title}
-                    className="rounded-lg"
-                />
-                <h1 className="group-hover:flex font-bold text-sm absolute bottom-0 left-0 h-10 w-full bg-black bg-opacity-40 text-white hidden justify-center items-center px-4 py-5 rounded-t transition-transform duration-300">
-                    {movie.title}
-                </h1>
+            <div ref={tilt} className="rounded-lg">
+                <div className="relative">
+                    <img
+                        src={`${BASE_IMAGE_URL}/${movie.poster_path}`}
+                        alt={movie.title}
+                        className="rounded-lg"
+                    />
+                    <h1 className="group-hover:flex font-bold text-sm absolute bottom-0 left-0 h-10 w-full bg-black bg-opacity-40 text-white hidden justify-center items-center px-4 py-5 rounded-t transition-transform duration-300 rounded-bl rounded-br">
+                        {movie.title}
+                    </h1>
+                </div>
+                <div className="flex items-center justify-center text-brandYellow mt-4 mb-2">
+                    {calculateStars(movie.vote_average)}
+                </div>
             </div>
-            <div className="flex items-center justify-center text-brandYellow mt-4 mb-2">
-                {calculateStars(movie.vote_average)}
-            </div>
+
         </NavLink>
     );
 }
