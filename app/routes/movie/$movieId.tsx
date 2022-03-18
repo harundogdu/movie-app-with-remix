@@ -1,128 +1,96 @@
-import {json, LinksFunction, LoaderFunction, useLoaderData} from "remix";
+import React from "react";
+import {LinksFunction, LoaderFunction, MetaFunction, useLoaderData} from "remix";
 import invariant from "tiny-invariant";
-import {getMovie} from "~/services/apiService";
-import {IMoviesProps} from "~/types/movies";
-import {HiExternalLink} from "react-icons/hi";
-import MovieDetailItem from "~/components/MovieDetailItem";
-import MovieDetailButtons from "~/components/MovieDetailButtons";
+import {getMovie, getMovieVideos} from "~/services/apiService";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
-import {Carousel} from 'react-responsive-carousel';
+import Modal from 'react-modal';
+import {Result} from "~/types/videos";
+import MovieDetailHeader from "~/components/movieDetailHeader";
+import MovieDetailsImages from "~/components/movieDetailsImages";
+import MoviesDetailModal from "~/components/moviesDetailModal";
+
+export const meta: MetaFunction = ({params, data}) => {
+    const movie = data.movie;
+    invariant(movie, "movie is required");
+    return {
+        title: `${movie.title}`,
+        description: `${movie.overview}`,
+    };
+};
 
 
 export const links: LinksFunction = () => {
     return [{rel: "stylesheet", href: styles}];
 };
+
 export const loader: LoaderFunction = async ({params}) => {
     invariant(params.movieId, "params.movieId is required");
-    return json(await getMovie(params.movieId));
+    const movie = await getMovie(params.movieId);
+    const videos = await getMovieVideos(params.movieId);
+
+    return {
+        movie,
+        videos
+    };
 };
 
 export default function MovieDetail() {
-    const movie = useLoaderData<IMoviesProps>();
+    const {movie, videos} = useLoaderData();
+    const [modalIsOpen, setModalIsOpen] = React.useState(false);
+
     const BASE_BACKDROP_PATH = "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces";
     const BASE_POSTER_PATH = "https://www.themoviedb.org/t/p/w220_and_h330_face";
+    Modal.setAppElement('body');
 
-    const parseYear = (date: string) => {
-        return date.split("-")[0];
+
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: '#000',
+            color: '#fff',
+            borderRadius: '4px',
+            width: '55%',
+            height: '50%',
+            padding: '0',
+            overflow: 'hidden',
+            border: 'none',
+            boxShadow: '0 0 20px rgba(0,0,0,0.5)',
+            outline: 'none',
+            zIndex: '9999',
+        },
     };
 
+    const currentVideo = videos.results.find((video: Result) => (
+        video.name.includes("Official Trailer") || video.name.includes("Trailer")
+    ))
+
     return (
-        <div className="w-full px-4 space-y-4">
-
-            <div className="relative bg-gradient-to-b from-detailPrimary to-detailSecondary rounded-lg ">
-                <div
-                    className="absolute inset-0 opacity-10 w-full h-full rounded-lg"
-                    style={{
-                        background: `url(${BASE_BACKDROP_PATH}${movie.backdrop_path}) no-repeat center center`,
-                        objectFit: "contain",
-                        width: "100%",
-                        height: "100%",
-                    }}
-                />
-
-                <div
-                    className="z-10 relative w-full text-white py-12 px-6 rounded-lg flex justify-evenly items-center space-x-4">
-                    <div className="flex-shrink-0 min-w-[20rem]">
-                        <img
-                            src={`${BASE_POSTER_PATH}${movie.poster_path}`}
-                            alt={movie.title}
-                            className="rounded-lg w-96 h-96 object-contain"
-                        />
-                    </div>
-                    <div className="flex flex-col px-4 space-y-4">
-                        <h1 className="text-xl">{movie.title} - ({parseYear(movie.release_date)})
-                            <span className="text-gray-200 mx-1">{movie.adult ? "- +18" : ""}</span>
-                            <span className="text-gray-200 mx-1">{movie.status}</span>
-                        </h1>
-
-                        <MovieDetailItem title={"Overview"} text={movie.overview}/>
-
-                        <MovieDetailItem title={"Genres"} array={movie.genres}/>
-                        <MovieDetailItem title={"Production Countries"} array={movie.production_countries}/>
-                        <MovieDetailItem title={"Production Companies"} array={movie.production_companies}/>
-                        <MovieDetailItem title={"Spoken Languages"} array={movie.spoken_languages}/>
-
-                        <div className="flex space-x-4">
-                            <MovieDetailItem title={"Release Date"} text={movie.release_date}/>
-                            <MovieDetailItem title={"Budget"} text={movie.budget}/>
-                            <MovieDetailItem title={"Revenue"} text={movie.revenue}/>
-                            <MovieDetailItem title={"Runtime"} text={`${movie.runtime} minutes`}/>
-                        </div>
-
-                        <div>
-                            <span className="text-sm">
-                                <span className="text-gray-600">
-                                    <HiExternalLink className="inline-block mr-1"/>
-                                    <a href={movie.homepage} rel="noreferrer" target="_blank">Load More..</a>
-                                </span>
-                            </span>
-                        </div>
-
-                        <div className="flex justify-end space-x-2">
-                            <MovieDetailButtons
-                                title="View on TMDB"
-                                path={`https://www.themoviedb.org/movie/${movie.id}`}
-                            />
-                            <MovieDetailButtons
-                                title="View on IMDB"
-                                path={`https://www.imdb.com/title/${movie.imdb_id}`}
-                            />
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <h4 className="text-2xl text-white">
-                Some pictures from the movie
-            </h4>
-            <Carousel>
-                <div className="h-96">
-                    <img src={`${BASE_BACKDROP_PATH}${movie.backdrop_path}`} alt={movie.title}
-                         className="h-full w-full object-contain"/>
-                </div>
-                <div className="h-96">
-                    <img src={`${BASE_POSTER_PATH}${movie.poster_path}`} alt={movie.title}
-                         className="h-full w-full object-contain"/>
-                </div>
-                {movie.belongs_to_collection ?
-                    <div className="h-96">
-                        <img src={`${BASE_BACKDROP_PATH}${movie.belongs_to_collection.backdrop_path}`} alt={movie.title}
-                             className="h-full w-full object-contain"/>
-                    </div>
-                    :
-                    <></>
-                }
-                {movie.belongs_to_collection ?
-                    <div className="h-96">
-                        <img src={`${BASE_POSTER_PATH}${movie.belongs_to_collection.poster_path}`} alt={movie.title}
-                             className="h-full w-full object-contain"/>
-                    </div>
-                    :
-                    <></>
-                }
-            </Carousel>
-
+        <div className="w-full px-4 space-y-4 h-full">
+            {/* Details */}
+            <MovieDetailHeader
+                BASE_BACKDROP_PATH={BASE_BACKDROP_PATH}
+                BASE_POSTER_PATH={BASE_POSTER_PATH}
+                movie={movie}
+                setModalIsOpen={setModalIsOpen}
+            />
+            {/* Images */}
+            <MovieDetailsImages
+                BASE_BACKDROP_PATH={BASE_BACKDROP_PATH}
+                BASE_POSTER_PATH={BASE_POSTER_PATH}
+                movie={movie}
+            />
+            {/* Modal */}
+            <MoviesDetailModal
+                modalIsOpen={modalIsOpen}
+                setModalIsOpen={setModalIsOpen}
+                customStyles={customStyles}
+                currentVideo={currentVideo}
+            />
         </div>
     );
 }
