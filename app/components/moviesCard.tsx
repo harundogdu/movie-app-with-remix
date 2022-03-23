@@ -5,7 +5,7 @@ import {useEffect, useRef} from "react";
 import VanillaTilt from 'vanilla-tilt';
 
 function MoviesCard({movie}: { movie: IMoviesProps }) {
-    const BASE_IMAGE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
+    const BASE_IMAGE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face"
 
     const calculateStars = (star: number) => {
         const stars = [];
@@ -53,6 +53,7 @@ function MoviesCard({movie}: { movie: IMoviesProps }) {
                 <div className="flex items-center justify-center text-brandYellow mt-4 mb-2">
                     {calculateStars(movie.vote_average)}
                 </div>
+                
             </div>
 
         </NavLink>

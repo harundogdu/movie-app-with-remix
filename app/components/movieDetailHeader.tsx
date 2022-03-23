@@ -25,7 +25,7 @@ export default function MovieDetailHeader({
             <div
                 className="absolute inset-0 opacity-10 w-full h-full rounded-lg"
                 style={{
-                    background: `url(${BASE_BACKDROP_PATH}${movie.backdrop_path}) no-repeat center center`,
+                    background: `url(${BASE_BACKDROP_PATH}/${movie.backdrop_path}) no-repeat center center`,
                     objectFit: "contain",
                     width: "100%",
                     height: "100%",
@@ -36,7 +36,7 @@ export default function MovieDetailHeader({
                 className="z-1 relative w-full text-white py-12 px-6 rounded-lg flex justify-evenly items-center space-x-4">
                 <div className="flex-shrink-0 min-w-[20rem] flex flex-col items-center space-y-4">
                     <img
-                        src={`${BASE_POSTER_PATH}${movie.poster_path}`}
+                        src={`${BASE_POSTER_PATH}/${movie.poster_path}`}
                         alt={movie.title}
                         className="rounded-lg w-96 h-96 object-contain"
                     />

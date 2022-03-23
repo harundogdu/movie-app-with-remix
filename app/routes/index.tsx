@@ -11,15 +11,20 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
     const movies = useLoaderData<IMoviesProps[]>();
-
+    const heroSectionMovie = movies.find(movie => movie.vote_average > 8) || movies[0];
+    const BASE_BACKDROP_PATH = "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces";
     return (
         <div className="flex flex-col justify-center items-center">
-            <HeroSection img="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/lmZFxXgJE3vgrciwuDib0N8CfQo.jpg"
-                         title="Avengers: Sonsuzluk Savaşı"/>
+            <HeroSection
+                img={`${BASE_BACKDROP_PATH}/${heroSectionMovie.backdrop_path}`}
+                title={heroSectionMovie.title}
+                overview={heroSectionMovie.overview}
+                id={heroSectionMovie.id}
+            />
 
             <div className="grid grid-cols-5 mt-6">
-                {movies.map((movie) => (
-                    <MoviesCard movie={movie} key={movie.id}/>
+                {movies.map((movie,index) => (
+                    <MoviesCard movie={movie} key={index}/>
                 ))}
             </div>
         </div>
