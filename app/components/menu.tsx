@@ -1,9 +1,16 @@
 import { AiOutlineStar, AiOutlineStock } from "react-icons/ai";
 import { BiMovie } from "react-icons/bi";
+import { CgRowLast } from "react-icons/cg";
 import MenuItem from "~/components/menuItem";
 
 function Menu() {
   const activeLinks = [
+    {
+      id: 1,
+      title: "Now Playing",
+      path: "/",
+      icon: <CgRowLast />,
+    },
     {
       id: 2,
       title: "Popular",

@@ -30,3 +30,17 @@ export const getNowPlayingMovies = async () => {
     const response = await apiService.get(`/movie/now_playing?api_key=${API_KEY}`);
     return response.data;
 }
+
+export const getSimilarMovies = async (movieId: string) => {
+    const response = await apiService.get(`/movie/${movieId}/similar?api_key=${API_KEY}`);
+    const { results } = response.data;
+    return results;
+}
+
+/* Search Movie */
+export const getSearchMovieDetails = async (query: string) => {
+    const response = await apiService.get(`/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1`);
+    const { results } = response.data;
+    return results;
+}
+
