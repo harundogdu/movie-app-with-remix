@@ -1,25 +1,45 @@
-import {Genre, ProductionCompany, ProductionCountry, SpokenLanguage} from "~/types/movies";
+import {
+  Genre,
+  ProductionCompany,
+  ProductionCountry,
+  SpokenLanguage,
+} from "~/types/movies";
 
 interface IMovieDetailItemProps {
-    title: string,
-    text?: string | number,
-    array?: Genre[] | ProductionCompany[] | ProductionCountry[] | SpokenLanguage[],
+  title: string;
+  text?: string | number;
+  array?:
+    | Genre[]
+    | ProductionCompany[]
+    | ProductionCountry[]
+    | SpokenLanguage[];
 }
 
-export default function MovieDetailItem({title, text = "", array}: IMovieDetailItemProps) {
-    return (
-        <div>
-            <span className="font-semibold">{title}</span>
-            {
-                text ?
-                    <>
-                        <p className="text-sm">{text}</p>
-                    </>
-                    :
-                    <>
-                        {array && <p className="text-sm w-5/6">{array.map(item => item.name).join(", ")}</p>}
-                    </>
-            }
-        </div>
-    );
+export default function MovieDetailItem({
+  title,
+  text = "",
+  array,
+}: IMovieDetailItemProps) {
+  return (
+    <div>
+      <span className="font-semibold">{title}</span>
+      {text ? (
+        <>
+          <p className="text-sm">{text}</p>
+        </>
+      ) : (
+        <>
+          {array && (
+            <p className="text-sm w-5/6">
+              {array.map((item, index) => {
+                return (
+                  <span key={index + "_" + Math.random() * 1000}>{item.name}</span>
+                );
+              })}
+            </p>
+          )}
+        </>
+      )}
+    </div>
+  );
 }

@@ -60,9 +60,9 @@ export default function MovieDetailHeader({
                     <MovieDetailItem title={"Spoken Languages"} array={movie.spoken_languages}/>
 
                     <div className="flex space-x-4">
-                        <MovieDetailItem title={"Release Date"} text={movie.release_date}/>
-                        <MovieDetailItem title={"Budget"} text={movie.budget}/>
-                        <MovieDetailItem title={"Revenue"} text={movie.revenue}/>
+                        <MovieDetailItem title={"Release Date"} text={movie.release_date || "N/A"}/>
+                        <MovieDetailItem title={"Budget"} text={movie.budget || "N/A"}/>
+                        <MovieDetailItem title={"Revenue"} text={movie.revenue || "N/A"}/>
                         <MovieDetailItem title={"Runtime"} text={`${movie.runtime} minutes`}/>
                     </div>
 

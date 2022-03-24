@@ -1,36 +1,35 @@
-import {NavLink} from "remix";
+import { NavLink } from "remix";
 
 interface MenuItemProps {
-    links: MenuItemLinks[];
-    title: string;
+  links: MenuItemLinks[];
+  title: string;
 }
 
 interface MenuItemLinks {
-    id: number | string,
-    title: string,
-    path: string,
-    icon: JSX.Element
+  id: number | string;
+  title: string;
+  path: string;
+  icon: JSX.Element;
 }
 
-
 function MenuItem(props: MenuItemProps) {
-    return (
-        <>
-            <small className="text-sm text-light my-3">
-                {props.title}
-            </small>
-            <div className="flex flex-col text-lg px-3 space-y-3">
-                {
-                    props.links.map(link => (
-                        <NavLink to={link.path} key={link.id} className="flex items-center text-xl">
-                            {link.icon}
-                            <span className="ml-4">{link.title}</span>
-                        </NavLink>
-                    ))
-                }
-            </div>
-        </>
-    );
+  return (
+    <>
+      <small className="text-sm text-light my-3">{props.title}</small>
+      <div className="flex flex-col text-lg px-3 space-y-3">
+        {props.links.map((link, index) => (
+          <NavLink
+            to={link.path}
+            key={link.id + "_" + index}
+            className="flex items-center text-xl"
+          >
+            {link.icon}
+            <span className="ml-4">{link.title}</span>
+          </NavLink>
+        ))}
+      </div>
+    </>
+  );
 }
 
 export default MenuItem;
