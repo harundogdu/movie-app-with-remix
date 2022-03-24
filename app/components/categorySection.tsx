@@ -1,6 +1,7 @@
 import HeroSection from "~/components/heroSection";
 import MoviesCard from "~/components/moviesCard";
 import { IMoviesProps } from "~/types/movies";
+import MainTitle from "./mainTitle";
 
 interface ICategorySectionProps {
   title: string;
@@ -25,9 +26,7 @@ function CategorySection({
       />
 
       {/* title */}
-      <h2 className="text-4xl font-bold text-center text-light my-4">
-        {title}
-      </h2>
+      <MainTitle title={title} />
 
       {/* movies */}
 
