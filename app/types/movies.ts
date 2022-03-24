@@ -22,6 +22,7 @@ export interface SpokenLanguage {
 }
 
 export interface IMoviesProps {
+    genre_ids: any;
     adult: boolean;
     backdrop_path: string;
     belongs_to_collection?: any;
