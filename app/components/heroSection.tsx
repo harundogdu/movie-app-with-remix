@@ -5,7 +5,7 @@ function HeroSection({img, title, overview, id}: { img: string, title: string, o
     return (
         <NavLink
             to={`/movie/${id}`}
-            className="w-full h-96 shadow-xl rounded-lg relative px-8 group"
+            className="w-full h-96 rounded-lg relative px-8 group"
             >
             <img src={img} alt="Hero Section" className="w-full h-full object-cover shadow rounded"/>
             <div className="bg-black opacity-75 rounded-t-lg absolute bottom-0 right-8">
