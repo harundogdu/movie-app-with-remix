@@ -1,19 +1,19 @@
-import {NavLink} from "remix";
-import {IMoviesProps} from "~/types/movies";
-import {AiFillStar, AiOutlineStar} from "react-icons/ai";
-import {useEffect, useRef} from "react";
+import { NavLink } from "remix";
+import { IMoviesProps } from "~/types/movies";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useEffect, useRef } from "react";
 import VanillaTilt from 'vanilla-tilt';
 
-function MoviesCard({movie}: { movie: IMoviesProps }) {
+function MoviesCard({ movie }: { movie: IMoviesProps }) {
     const BASE_IMAGE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face"
 
     const calculateStars = (star: number) => {
         const stars = [];
         for (let i = 0; i <= star / 2; i++) {
-            stars.push(<AiFillStar key={i}/>);
+            stars.push(<AiFillStar key={i} />);
         }
         for (let i = 0; i < 4 - star / 2; i++) {
-            stars.push(<AiOutlineStar key={i}/>);
+            stars.push(<AiOutlineStar key={i} />);
         }
         return stars;
     }
@@ -42,7 +42,7 @@ function MoviesCard({movie}: { movie: IMoviesProps }) {
             <div ref={tilt} className="rounded-lg">
                 <div className="relative">
                     <img
-                        src={`${BASE_IMAGE_URL}/${movie.poster_path}`}
+                        src={`${BASE_IMAGE_URL}/${movie.poster_path || BASE_IMAGE_URL + "/" + movie.backdrop_path || BASE_IMAGE_URL + "/" + movie.belongs_to_collection.poster_path}`}
                         alt={movie.title}
                         className="rounded-lg"
                     />
@@ -53,7 +53,7 @@ function MoviesCard({movie}: { movie: IMoviesProps }) {
                 <div className="flex items-center justify-center text-brandYellow mt-4 mb-2">
                     {calculateStars(movie.vote_average)}
                 </div>
-                
+
             </div>
 
         </NavLink>
