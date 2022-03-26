@@ -44,7 +44,7 @@ function MoviesCard({ movie }: { movie: IMoviesProps }) {
                     <img
                         src={`${BASE_POSTER_PATH}/${movie.poster_path || BASE_POSTER_PATH + "/" + movie.backdrop_path || BASE_POSTER_PATH + "/" + movie.belongs_to_collection.poster_path}`}
                         alt={movie.title}
-                        className="rounded-lg"
+                        className="rounded-lg w-full h-full"
                     />
                     <h1 className="group-hover:flex font-bold text-sm absolute bottom-0 left-0 h-10 w-full bg-black bg-opacity-40 text-white hidden justify-center items-center px-4 py-5 rounded-t transition-transform duration-300 rounded-bl rounded-br">
                         {movie.title}

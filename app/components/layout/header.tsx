@@ -50,7 +50,7 @@ const Header = () => {
 				<input
 					type="text"
 					placeholder="Search movie!"
-					className="dark:bg-white bg-gray-50 border-gray-800  focus:shadow-outline border dark:border-gray-300  py-2 px-4 block appearance-none leading-normal w-1/4 ml-auto focus:w-1/2 transition-all duration-300 outline-none dark:text-gray-400 text-primary"
+					className="dark:bg-white bg-gray-50 border-gray-800  focus:shadow-outline border dark:border-gray-300  py-2 px-4 block appearance-none leading-normal w-full md:w-1/3 md:ml-auto focus:w-1/2 transition-all duration-300 outline-none dark:text-gray-400 text-primary ml-4"
 					value={searchQuery}
 					onChange={(e) => setSearchQuery(e.target.value)}
 				/>

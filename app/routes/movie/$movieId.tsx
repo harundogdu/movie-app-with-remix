@@ -60,7 +60,7 @@ export default function MovieDetail() {
   );
 
   return (
-    <div className="w-full px-4 space-y-4 h-full">
+    <div className="w-full sm:px-4 sm:space-y-4 h-full overflow-x-hidden">
       {/* Details */}
       <MovieDetailHeader
         movie={movie}

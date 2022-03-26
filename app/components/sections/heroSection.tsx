@@ -13,7 +13,7 @@ function HeroSection({img, title, overview, id}: { img: string, title: string, o
                     <h1 className="text-white text-center text-2xl font-bold">{title}</h1>
                 </div>
             </div>
-            <div className="bg-black opacity-75 rounded-tr-md absolute bottom-0 left-8 w-1/2">
+            <div className="bg-black opacity-75 rounded-tr-md absolute bottom-0 left-8 w-1/2 hidden lg:block">
                 <div className="w-full flex flex-col items-end justify-end p-6">
                     <p className="text-white text-center text-sm">{overview}</p>
                 </div>

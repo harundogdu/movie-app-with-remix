@@ -13,7 +13,7 @@ export default function MovieDetailsImages({
   const BASE_POSTER_PATH = "https://www.themoviedb.org/t/p/w220_and_h330_face";
 
   return (
-    <div>
+    <div className="px-4">
       <MainTitle title={"Some pictures from the movie"} />
       <Carousel>
         <div className="h-96">

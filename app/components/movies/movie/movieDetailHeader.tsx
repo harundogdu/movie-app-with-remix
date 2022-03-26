@@ -20,18 +20,17 @@ export default function MovieDetailHeader({
     return (
         <div className="relative bg-gradient-to-b from-detailPrimary to-detailSecondary rounded-lg ">
             <div
-                className="absolute inset-0 opacity-10 w-full h-full rounded-lg"
+                className="absolute inset-0 opacity-10 w-full h-full rounded-lg xl:object-cover object-contain"
                 style={{
                     background: `url(${BASE_BACKDROP_PATH}/${movie.backdrop_path}) no-repeat center center`,
-                    objectFit: "contain",
                     width: "100%",
                     height: "100%",
                 }}
             />
 
             <div
-                className="z-1 relative w-full text-white py-12 px-6 rounded-lg flex justify-evenly items-center space-x-4">
-                <div className="flex-shrink-0 min-w-[20rem] flex flex-col items-center space-y-4">
+                className="z-1 relative w-full text-white py-12 sm:px-6 rounded-lg flex xl:justify-evenly xl:items-center space-x-4 flex-col xl:flex-row">
+                <div className="flex-shrink-0 sm:min-w-[20rem] flex flex-col items-center space-y-4 my-4 sm:my-0">
                     <img
                         src={`${BASE_POSTER_PATH}/${movie.poster_path}`}
                         alt={movie.title}
@@ -56,7 +55,7 @@ export default function MovieDetailHeader({
                     <MovieDetailItem title={"Production Companies"} array={movie.production_companies} />
                     <MovieDetailItem title={"Spoken Languages"} array={movie.spoken_languages} />
 
-                    <div className="flex space-x-4">
+                    <div className="flex sm:flex-row flex-col sm:space-x-4 space-y-4">
                         <MovieDetailItem title={"Release Date"} text={movie.release_date || "N/A"} />
                         <MovieDetailItem title={"Budget"} text={movie.budget || "N/A"} />
                         <MovieDetailItem title={"Revenue"} text={movie.revenue || "N/A"} />

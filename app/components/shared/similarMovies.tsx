@@ -9,7 +9,7 @@ function SimilarMovies({ similarMovies }: ISimilarMoviesProps) {
   return (
     <div>
       <MainTitle title="Similar Movies" />
-      <div className="grid grid-cols-7 w-full px-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-10 w-full px-6" >
         {similarMovies.map((movie, index) => {
           return <MoviesCard movie={movie} key={`${movie.id}_${index}`} />;
         })}

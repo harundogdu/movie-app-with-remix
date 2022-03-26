@@ -25,7 +25,7 @@ function CategorySection({
 
       <MainTitle title={title} />
 
-      <div className="grid grid-cols-5 w-full px-6" >
+      <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-10 w-full px-6" >
         {movies.map((movie, index) => (
           <MoviesCard movie={movie} key={`${movie.id}_${index}`} />
         ))}

@@ -11,6 +11,7 @@ import {
   Link
 } from "remix";
 import styles from "~/styles/app.css";
+import mainStyles from "~/styles/main.css";
 import { IDocumentProps, IErrorProps, ILayoutProps } from "~/types/root";
 import { Error, Footer, Header, Main, Sidebar } from "~/components";
 
@@ -19,7 +20,10 @@ export const meta: MetaFunction = () => {
 };
 
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: styles }];
+  return [
+    { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: mainStyles }
+  ];
 };
 
 export default function App() {

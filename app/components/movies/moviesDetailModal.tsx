@@ -22,11 +22,11 @@ export default function MoviesDetailModal({
             onRequestClose={() => setModalIsOpen(false)}
             style={customStyles}
         >
-            <div className="h-[100%]">
+            <div id="youtube" className="h-full">
                 <YouTube
                     videoId={currentVideo.key}
                     opts={{ playerVars: { autoplay: 0 } }}
-                    className="w-full !min-h-[10rem] m-auto"
+                    className="w-full !h-full m-auto"
                 />
             </div>
         </Modal>
