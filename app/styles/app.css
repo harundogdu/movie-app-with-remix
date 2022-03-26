@@ -651,6 +651,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 24rem;
 }
 
+.h-64 {
+  height: 16rem;
+}
+
 .\!min-h-\[10rem\] {
   min-height: 10rem !important;
 }

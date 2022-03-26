@@ -9,8 +9,8 @@ interface IMovieDetailsImagesProps {
 export default function MovieDetailsImages({
   movie,
 }: IMovieDetailsImagesProps) {
-  const BASE_BACKDROP_PATH = process.env.BASE_BACKDROP_PATH;
-  const BASE_POSTER_PATH = process.env.BASE_POSTER_PATH;
+  const BASE_BACKDROP_PATH = "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces"
+  const BASE_POSTER_PATH = "https://www.themoviedb.org/t/p/w220_and_h330_face";
 
   return (
     <div>

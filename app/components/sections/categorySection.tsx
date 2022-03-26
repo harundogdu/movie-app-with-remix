@@ -12,7 +12,7 @@ function CategorySection({
   movies,
   heroSectionMovie,
 }: ICategorySectionProps) {
-  const BASE_BACKDROP_PATH = process.env.BASE_BACKDROP_PATH;
+  const BASE_BACKDROP_PATH = "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces";
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -23,12 +23,9 @@ function CategorySection({
         id={heroSectionMovie.id}
       />
 
-      {/* title */}
       <MainTitle title={title} />
 
-      {/* movies */}
-
-      <div className="grid grid-cols-5 w-full px-6">
+      <div className="grid grid-cols-5 w-full px-6" >
         {movies.map((movie, index) => (
           <MoviesCard movie={movie} key={`${movie.id}_${index}`} />
         ))}

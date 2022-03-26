@@ -5,7 +5,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IMoviesProps } from "~/types/movies";
 
 function MoviesCard({ movie }: { movie: IMoviesProps }) {
-    const BASE_IMAGE_URL = process.env.BASE_IMAGE_URL;
+    const BASE_POSTER_PATH = "https://www.themoviedb.org/t/p/w220_and_h330_face";
 
     const calculateStars = (star: number) => {
         const stars = [];
@@ -42,7 +42,7 @@ function MoviesCard({ movie }: { movie: IMoviesProps }) {
             <div ref={tilt} className="rounded-lg">
                 <div className="relative">
                     <img
-                        src={`${BASE_IMAGE_URL}/${movie.poster_path || BASE_IMAGE_URL + "/" + movie.backdrop_path || BASE_IMAGE_URL + "/" + movie.belongs_to_collection.poster_path}`}
+                        src={`${BASE_POSTER_PATH}/${movie.poster_path || BASE_POSTER_PATH + "/" + movie.backdrop_path || BASE_POSTER_PATH + "/" + movie.belongs_to_collection.poster_path}`}
                         alt={movie.title}
                         className="rounded-lg"
                     />
