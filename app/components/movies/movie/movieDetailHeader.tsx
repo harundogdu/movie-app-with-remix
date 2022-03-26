@@ -1,22 +1,19 @@
-import React from 'react';
-import MovieDetailItem from "~/components/MovieDetailItem";
-import {HiExternalLink} from "react-icons/hi";
-import MovieDetailButtons from "~/components/MovieDetailButtons";
-import {IMoviesProps} from "~/types/movies";
+import { HiExternalLink } from "react-icons/hi";
+import { IMoviesProps } from "~/types/movies";
+import { MovieDetailItem, MovieDetailButtons } from '~/components';
 
 interface MovieDetailHeaderProps {
-    BASE_BACKDROP_PATH: string;
-    BASE_POSTER_PATH: string;
     movie: IMoviesProps;
     setModalIsOpen: (isOpen: boolean) => void;
 }
 
 export default function MovieDetailHeader({
-                                              BASE_BACKDROP_PATH,
-                                              BASE_POSTER_PATH,
-                                              movie,
-                                              setModalIsOpen
-                                          }: MovieDetailHeaderProps) {
+    movie,
+    setModalIsOpen
+}: MovieDetailHeaderProps) {
+    const BASE_BACKDROP_PATH = process.env.BASE_BACKDROP_PATH;
+    const BASE_POSTER_PATH = process.env.BASE_POSTER_PATH;
+
     const parseYear = (date: string) => {
         return date.split("-")[0];
     };
@@ -52,27 +49,27 @@ export default function MovieDetailHeader({
                         <span className="text-gray-200 mx-1">{movie.status}</span>
                     </h1>
 
-                    <MovieDetailItem title={"Overview"} text={movie.overview}/>
+                    <MovieDetailItem title={"Overview"} text={movie.overview} />
 
-                    <MovieDetailItem title={"Genres"} array={movie.genres}/>
-                    <MovieDetailItem title={"Production Countries"} array={movie.production_countries}/>
-                    <MovieDetailItem title={"Production Companies"} array={movie.production_companies}/>
-                    <MovieDetailItem title={"Spoken Languages"} array={movie.spoken_languages}/>
+                    <MovieDetailItem title={"Genres"} array={movie.genres} />
+                    <MovieDetailItem title={"Production Countries"} array={movie.production_countries} />
+                    <MovieDetailItem title={"Production Companies"} array={movie.production_companies} />
+                    <MovieDetailItem title={"Spoken Languages"} array={movie.spoken_languages} />
 
                     <div className="flex space-x-4">
-                        <MovieDetailItem title={"Release Date"} text={movie.release_date || "N/A"}/>
-                        <MovieDetailItem title={"Budget"} text={movie.budget || "N/A"}/>
-                        <MovieDetailItem title={"Revenue"} text={movie.revenue || "N/A"}/>
-                        <MovieDetailItem title={"Runtime"} text={`${movie.runtime} minutes`}/>
+                        <MovieDetailItem title={"Release Date"} text={movie.release_date || "N/A"} />
+                        <MovieDetailItem title={"Budget"} text={movie.budget || "N/A"} />
+                        <MovieDetailItem title={"Revenue"} text={movie.revenue || "N/A"} />
+                        <MovieDetailItem title={"Runtime"} text={`${movie.runtime} minutes`} />
                     </div>
 
                     <div>
-                            <span className="text-sm">
-                                <span className="text-gray-600">
-                                    <HiExternalLink className="inline-block mr-1"/>
-                                    <a href={movie.homepage} rel="noreferrer" target="_blank">Load More..</a>
-                                </span>
+                        <span className="text-sm">
+                            <span className="text-gray-600">
+                                <HiExternalLink className="inline-block mr-1" />
+                                <a href={movie.homepage} rel="noreferrer" target="_blank">Load More..</a>
                             </span>
+                        </span>
                     </div>
 
                     <div className="flex justify-end space-x-2">

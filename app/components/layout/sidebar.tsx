@@ -1,6 +1,6 @@
 import Logo from "~/assets/logo.png";
 import { NavLink } from "remix";
-import Menu from "~/components/menu";
+import { Menu } from "~/components";
 
 function Sidebar() {
   return (

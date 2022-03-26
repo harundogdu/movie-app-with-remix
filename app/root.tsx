@@ -8,12 +8,11 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
+  Link
 } from "remix";
-import { Error, Footer, Header, Main } from "~/components";
-import { IDocumentProps, IErrorProps, ILayoutProps } from "~/types/root";
 import styles from "~/styles/app.css";
-import Sidebar from "~/components/sidebar";
-import { Link } from "react-router-dom";
+import { IDocumentProps, IErrorProps, ILayoutProps } from "~/types/root";
+import { Error, Footer, Header, Main, Sidebar } from "~/components";
 
 export const meta: MetaFunction = () => {
   return { title: "HD Movie App | Homepage" };

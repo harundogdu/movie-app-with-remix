@@ -1,6 +1,5 @@
 import Modal from "react-modal";
 import YouTube from "react-youtube";
-import React from "react";
 
 interface IMoviesDetailModalProps {
     modalIsOpen: boolean;
@@ -12,11 +11,11 @@ interface IMoviesDetailModalProps {
 }
 
 export default function MoviesDetailModal({
-                                              modalIsOpen,
-                                              setModalIsOpen,
-                                              currentVideo,
-                                              customStyles
-                                          }: IMoviesDetailModalProps) {
+    modalIsOpen,
+    setModalIsOpen,
+    currentVideo,
+    customStyles
+}: IMoviesDetailModalProps) {
     return (
         <Modal
             isOpen={modalIsOpen}
@@ -26,7 +25,7 @@ export default function MoviesDetailModal({
             <div className="h-[100%]">
                 <YouTube
                     videoId={currentVideo.key}
-                    opts={{playerVars: {autoplay: 0}}}
+                    opts={{ playerVars: { autoplay: 0 } }}
                     className="w-full !min-h-[10rem] m-auto"
                 />
             </div>

@@ -1,7 +1,7 @@
 import { AiOutlineStar, AiOutlineStock } from "react-icons/ai";
 import { BiMovie } from "react-icons/bi";
 import { CgRowLast } from "react-icons/cg";
-import MenuItem from "~/components/menuItem";
+import { MenuItem } from "~/components";
 
 function Menu() {
   const activeLinks = [

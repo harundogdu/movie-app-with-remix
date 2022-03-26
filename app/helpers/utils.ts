@@ -1,0 +1,21 @@
+export const customModalStyles = {
+    content: {
+        top: "50%",
+        left: "50%",
+        right: "auto",
+        bottom: "auto",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%)",
+        backgroundColor: "#000",
+        color: "#fff",
+        borderRadius: "4px",
+        width: "55%",
+        height: "50%",
+        padding: "0",
+        overflow: "hidden",
+        border: "none",
+        boxShadow: "0 0 20px rgba(0,0,0,0.5)",
+        outline: "none",
+        zIndex: "9999",
+    },
+};

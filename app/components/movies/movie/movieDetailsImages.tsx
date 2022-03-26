@@ -1,19 +1,17 @@
-import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import { IMoviesProps } from "~/types/movies";
-import MainTitle from "./mainTitle";
+import { MainTitle } from "~/components";
 
 interface IMovieDetailsImagesProps {
-  BASE_BACKDROP_PATH: string;
-  BASE_POSTER_PATH: string;
   movie: IMoviesProps;
 }
 
 export default function MovieDetailsImages({
-  BASE_BACKDROP_PATH,
-  BASE_POSTER_PATH,
   movie,
 }: IMovieDetailsImagesProps) {
+  const BASE_BACKDROP_PATH = process.env.BASE_BACKDROP_PATH;
+  const BASE_POSTER_PATH = process.env.BASE_POSTER_PATH;
+
   return (
     <div>
       <MainTitle title={"Some pictures from the movie"} />

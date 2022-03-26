@@ -1,6 +1,5 @@
 import { IMoviesProps } from "~/types/movies";
-import MainTitle from "./mainTitle";
-import MoviesCard from "./moviesCard";
+import { MainTitle, MoviesCard } from "~/components";
 
 interface ISimilarMoviesProps {
   similarMovies: IMoviesProps[];

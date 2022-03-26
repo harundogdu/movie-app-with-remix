@@ -9,10 +9,10 @@ interface IMovieDetailItemProps {
   title: string;
   text?: string | number;
   array?:
-    | Genre[]
-    | ProductionCompany[]
-    | ProductionCountry[]
-    | SpokenLanguage[];
+  | Genre[]
+  | ProductionCompany[]
+  | ProductionCountry[]
+  | SpokenLanguage[];
 }
 
 export default function MovieDetailItem({

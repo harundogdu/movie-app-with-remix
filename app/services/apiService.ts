@@ -11,7 +11,7 @@ export const apiService = axios.create({
 });
 
 export const getMovie = async (movieId: string) => {
-    const response = await apiService.get(`/movie/${movieId}?api_key=${API_KEY}`);
+    const response = await apiService.get(`/movie/${movieId}?api_key=${API_KEY}`)
     return response.data;
 }
 

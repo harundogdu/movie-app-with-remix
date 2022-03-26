@@ -1,7 +1,7 @@
 import { json, LoaderFunction, useLoaderData } from "remix";
 import { getNowPlayingMovies } from "~/services/apiService";
 import { IMoviesProps } from "~/types/movies";
-import CategorySection from "~/components/categorySection";
+import { CategorySection } from "~/components";
 
 export const loader: LoaderFunction = async () => {
   const { results } = await getNowPlayingMovies();

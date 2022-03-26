@@ -1,9 +1,8 @@
 import { json, LoaderFunction, useLoaderData } from "remix";
 import invariant from "tiny-invariant";
-import MainTitle from "~/components/mainTitle";
-import MoviesCard from "~/components/moviesCard";
 import { getSearchMovieDetails } from "~/services/apiService";
 import { IMoviesProps } from "~/types/movies";
+import { MainTitle, MoviesCard } from "~/components";
 
 export const loader: LoaderFunction = async ({ params }) => {
     invariant(params.searchQuery, "params is required");

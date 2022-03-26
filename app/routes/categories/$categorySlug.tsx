@@ -1,8 +1,8 @@
-import CategorySection from "~/components/categorySection";
 import { LoaderFunction, useLoaderData } from "remix";
+import invariant from "tiny-invariant";
 import { getMoviesByCategory } from "~/services/apiService";
 import { IMoviesProps } from "~/types/movies";
-import invariant from "tiny-invariant";
+import { CategorySection } from "~/components";
 
 export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.categorySlug, "Category slug is required");

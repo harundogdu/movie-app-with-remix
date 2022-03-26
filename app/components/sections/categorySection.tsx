@@ -1,7 +1,5 @@
-import HeroSection from "~/components/heroSection";
-import MoviesCard from "~/components/moviesCard";
 import { IMoviesProps } from "~/types/movies";
-import MainTitle from "./mainTitle";
+import { HeroSection, MoviesCard, MainTitle } from "~/components";
 
 interface ICategorySectionProps {
   title: string;
@@ -14,8 +12,8 @@ function CategorySection({
   movies,
   heroSectionMovie,
 }: ICategorySectionProps) {
-  const BASE_BACKDROP_PATH =
-    "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces";
+  const BASE_BACKDROP_PATH = process.env.BASE_BACKDROP_PATH;
+
   return (
     <div className="flex flex-col justify-center items-center">
       <HeroSection
@@ -32,10 +30,7 @@ function CategorySection({
 
       <div className="grid grid-cols-5 w-full px-6">
         {movies.map((movie, index) => (
-          <MoviesCard
-            movie={movie}
-            key={`${movie.id}_${index}`}
-          />
+          <MoviesCard movie={movie} key={`${movie.id}_${index}`} />
         ))}
       </div>
     </div>

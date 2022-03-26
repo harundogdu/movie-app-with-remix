@@ -1,11 +1,11 @@
-import { NavLink } from "remix";
-import { IMoviesProps } from "~/types/movies";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useEffect, useRef } from "react";
+import { NavLink } from "remix";
 import VanillaTilt from 'vanilla-tilt';
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { IMoviesProps } from "~/types/movies";
 
 function MoviesCard({ movie }: { movie: IMoviesProps }) {
-    const BASE_IMAGE_URL = "https://www.themoviedb.org/t/p/w220_and_h330_face"
+    const BASE_IMAGE_URL = process.env.BASE_IMAGE_URL;
 
     const calculateStars = (star: number) => {
         const stars = [];
