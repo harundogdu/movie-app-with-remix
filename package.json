@@ -5,9 +5,9 @@
   "license": "",
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build:css && remix build",
+    "build": "npm run build:css && cross-env NODE_ENV=production GENERATE_SOURCEMAP=false  remix build",
     "build:css": "tailwindcss -o app/styles/app.css",
-    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
+    "dev": "concurrently \"npm run dev:css\" \"cross-env NODE_ENV=development remix dev\"",
     "dev:css": "tailwindcss -o app/styles/app.css --watch"
   },
   "dependencies": {
