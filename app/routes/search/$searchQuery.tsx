@@ -23,7 +23,7 @@ const SearchQuery = () => {
                                 {movies.map((movie, index) => (
                                     <MoviesCard
                                         movie={movie}
-                                        key={`${movie.id}_${index}`}
+                                        key={`${(index + 1) * Math.random() * 10000} `}
                                     />
                                 ))}
                             </div>

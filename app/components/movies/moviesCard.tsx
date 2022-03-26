@@ -5,6 +5,8 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IMoviesProps } from "~/types/movies";
 
 function MoviesCard({ movie }: { movie: IMoviesProps }) {
+    console.log('re_render');
+
     const BASE_POSTER_PATH = "https://www.themoviedb.org/t/p/w220_and_h330_face";
 
     const calculateStars = (star: number) => {

@@ -10,8 +10,7 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const movies = useLoaderData<IMoviesProps[]>();
-  const heroSectionMovie =
-    movies.find((movie) => movie.vote_average > 8) || movies[0];
+  const heroSectionMovie = movies.find((movie) => movie.vote_average > 8) || movies[0];
   return (
     <CategorySection
       title={"Now Playing Movies"}

@@ -33,7 +33,7 @@ export default function MovieDetailItem({
             <p className="text-sm w-5/6">
               {array.map((item, index) => {
                 return (
-                  <span key={index + "_" + Math.random() * 1000}>{item.name}</span>
+                  <span  key={`${(index + 1) * Math.random() * 10000} `} >{item.name}</span>
                 );
               })}
             </p>
