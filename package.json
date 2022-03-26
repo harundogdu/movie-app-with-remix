@@ -8,7 +8,8 @@
     "build": "npm run build:css && cross-env NODE_ENV=production GENERATE_SOURCEMAP=false  remix build",
     "build:css": "tailwindcss -o app/styles/app.css",
     "dev": "concurrently \"npm run dev:css\" \"cross-env NODE_ENV=development remix dev\"",
-    "dev:css": "tailwindcss -o app/styles/app.css --watch"
+    "dev:css": "tailwindcss -o app/styles/app.css",
+    "postinstall": "remix setup node"
   },
   "dependencies": {
     "@remix-run/react": "^1.2.3",
