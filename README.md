@@ -1,34 +1,47 @@
-# Welcome to Remix!
+## Movie App with Remix.js
 
-- [Remix Docs](https://remix.run/docs)
+Bu proje [Remix Run](https://remix.run/) , [Tailwind CSS](https://tailwindcss.com) ve [TMDB](https://www.themoviedb.org/) kullanılarak geliştirdiğim Remix.run film sitesi uygulamasıdır.
 
-## Deployment
+## Kullanılan paketler
 
-After having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
+<ul>
+  <li>axios</li>
+  <li>react-icons</li>
+  <li>react-modals</li>
+  <li>react-responsive-carousel</li>
+  <li>react-youtube</li>
+  <li>slugify</li>
+  <li>tailwind-scrollbar</li>
+  <li>tiny-invariant</li>
+  <li>vanilla-tilt</li>
+</ul>
 
-If you'd like to avoid using a Git repository, you can also deploy the directory by running [Vercel CLI](https://vercel.com/cli):
+## Kurulum
 
-```sh
-npm i -g vercel
-vercel
+İlk olarak aşağıdaki komutu kopyalanız. Ardından terminal ekranını açarak, projenin kurulmasını istediğiniz bir alana gelerek yapıştırıp çalıştırınız.
+
+```
+git clone https://github.com/harundogdu/movie-app-with-remix.git
 ```
 
-It is generally recommended to use a Git repository, because future commits will then automatically be deployed by Vercel, through its [Git Integration](https://vercel.com/docs/concepts/git).
+<br />
+Klonlama işleminin ardından kurulum işlemleri için terminal ekranına projenin adını yazarak, aşağıda bulunan kodu yapıştırıp çalıştırınız.
 
-## Development
-
-To run your Remix app locally, make sure your project's local dependencies are installed:
-
-```sh
-npm install
+```
+cd movie-app-with-remix  && npm install
 ```
 
-Afterwards, start the Remix development server like so:
+## Çalıştırma
 
-```sh
+Projeyi çalıştırmak için ana dizine gelip, aşağıdaki komutu yazmanız yeterli olacaktır.
+```
 npm run dev
 ```
 
-Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
+## Live Demo
 
-If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+Canlı Demoyu [Bura](https://movie-app-with-remix.vercel.app/)dan İnceleyebilirsiniz
+
+## Daha fazlası
+
+Daha fazlası ve aklınıza takılan herhangi bir soru için için bana kişisel [web sitem](https://harundogdu.com/) üzerinden ulaşabilir, "Pull Request" isteklerinde bulunabilirsiniz.
