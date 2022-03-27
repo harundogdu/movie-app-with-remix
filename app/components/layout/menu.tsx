@@ -32,7 +32,7 @@ function Menu() {
   ];
 
   return (
-    <div>
+    <div className="my-4">
       <div className="flex flex-col">
         <MenuItem links={activeLinks} title="Categories" />
       </div>
