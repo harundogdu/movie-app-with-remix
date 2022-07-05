@@ -38,7 +38,6 @@ const Header = () => {
 
 	React.useEffect(() => {
 		const localMode = JSON.parse(localStorage.getItem("dark") || "false");
-
 		setDarkMode(localMode);
 	}, []);
 

@@ -64,7 +64,7 @@ export function Layout({ children }: ILayoutProps) {
       </>
       <div className="w-full flex flex-col flex-1">
         <Header />
-        <div className="w-full flex flex-1 flex-col h-full overflow-auto scrollbar scrollbar-thin scrollbar  dark:scrollbar-track-gray-100 dark:scrollbar-thumb-red-600 scrollbar-track-gray-700 scrollbar-thumb-light">
+        <div className="w-full flex flex-1 flex-col h-full overflow-auto scrollbar scrollbar-thin   dark:scrollbar-track-gray-100 dark:scrollbar-thumb-red-600 scrollbar-track-gray-700 scrollbar-thumb-light">
           <Main children={children} />
           <Footer />
         </div>
@@ -78,6 +78,7 @@ export function ErrorBoundary({ error }: IErrorProps) {
     <Document title="Something went wrong!">
       <Error error={error} />
     </Document>
+    
   );
 }
 
